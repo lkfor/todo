@@ -1,0 +1,81 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.manabie.todo"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    implementation deps.support.app_compat
+    implementation deps.support.core_ktx
+    implementation deps.support.design_material
+    implementation deps.constraint_layout
+    implementation deps.support.vector_drawable
+    implementation deps.navigation.fragment
+    implementation deps.navigation.ui
+    implementation deps.lifecycle.extensions
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // Room
+    implementation deps.room.runtime
+    annotationProcessor deps.room.compiler
+    implementation deps.room.rxjava2
+
+    //architect
+    implementation deps.architect.lifecycle_extension
+    kapt deps.architect.lifecycle_compiler
+    implementation deps.architect.room_persistence_runtime
+    kapt deps.architect.room_persistence_compiler
+    implementation deps.architect.room_persistence_rx_javar2
+
+    //db debug
+    debugImplementation deps.db.debug_lib
+
+    //support library
+    implementation deps.support.recyclerview
+    implementation deps.support.cardview
+
+
+    // Android Testing Support Library's runner and rules
+    androidTestImplementation deps.atsl.core
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.atsl.rules
+    androidTestImplementation deps.room.testing
+    androidTestImplementation deps.arch_core.testing
+}

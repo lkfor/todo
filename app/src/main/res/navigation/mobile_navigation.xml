@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_all_task">
+
+    <fragment
+        android:id="@+id/navigation_all_task"
+        android:name="com.manabie.todo.ui.task.AllTaskFragment"
+        android:label="@string/title_all_task"
+        tools:layout="@layout/fragment_task" />
+
+    <fragment
+        android:id="@+id/navigation_completed_task"
+        android:name="com.manabie.todo.ui.task.CompletedBaseTaskFragment"
+        android:label="@string/title_completed_task"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_in_complete_task"
+        android:name="com.manabie.todo.ui.task.InCompletedBaseTaskFragment"
+        android:label="@string/title_incomplete_task"
+        tools:layout="@layout/fragment_notifications" />
+</navigation>
